@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net9.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AssemblyName>eSTOL Training Tool</AssemblyName>
+    <AssemblyName>STOL Training Tool</AssemblyName>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\Users\Cedric\Documents\git\Bombatlon\publish\</PublishUrl>
     <Install>true</Install>
