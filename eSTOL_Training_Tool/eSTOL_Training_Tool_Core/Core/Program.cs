@@ -69,17 +69,6 @@ namespace Bombathlon
             string currentDir =
                 AppDomain.CurrentDomain.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
 
-            string parent =
-                Directory.GetParent(currentDir)!.FullName;
-
-            // New installation location
-            string sibling =
-                Path.Combine(parent, "STOL_Training_Tool");
-
-            string siblingExe =
-                Path.Combine(sibling, "STOL Training Tool.exe");
-
-            // Only migrate from legacy folder
             string currentFolder =
                 Path.GetFileName(currentDir);
 
@@ -88,28 +77,64 @@ namespace Bombathlon
                 return;
             }
 
-            // New structure not present
-            if (!Directory.Exists(sibling))
-            {
-                return;
-            }
+            string parent =
+                Directory.GetParent(currentDir)!.FullName;
 
-            // New executable missing
-            if (!File.Exists(siblingExe))
-            {
-                return;
-            }
+            string newInstall =
+                Path.Combine(parent, "STOL_Training_Tool");
+
+            string newExe =
+                Path.Combine(newInstall, "STOL Training Tool.exe");
 
             try
             {
-                Process.Start(new ProcessStartInfo
+                if (!Directory.Exists(newInstall))
                 {
-                    FileName = siblingExe,
-                    WorkingDirectory = sibling,
-                    UseShellExecute = true
-                });
+                    Directory.CreateDirectory(newInstall);
 
-                Environment.Exit(0);
+                    foreach (string sourcePath in Directory.GetFiles(
+                                 currentDir,
+                                 "*",
+                                 SearchOption.AllDirectories))
+                    {
+                        string relative =
+                            Path.GetRelativePath(currentDir, sourcePath);
+
+                        string destination =
+                            Path.Combine(newInstall, relative);
+
+                        string? destinationDir =
+                            Path.GetDirectoryName(destination);
+
+                        if (!string.IsNullOrEmpty(destinationDir))
+                        {
+                            Directory.CreateDirectory(destinationDir);
+                        }
+
+                        try
+                        {
+                            File.Copy(sourcePath, destination, true);
+                            File.Delete(Path.Combine(destinationDir, "eSTOL Training Tool.exe"));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Failed to copy: {sourcePath}");
+                            Console.WriteLine(ex);
+                        }
+                    }
+
+                }
+                if (File.Exists(newExe))
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = newExe,
+                        WorkingDirectory = newInstall,
+                        UseShellExecute = true
+                    });
+
+                    Environment.Exit(0);
+                }
             }
             catch (Exception ex)
             {
