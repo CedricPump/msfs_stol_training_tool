@@ -30,9 +30,9 @@ namespace Bombathlon
             string currentDir = AppDomain.CurrentDomain.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
             string folderName = Path.GetFileName(currentDir);
 
-            if (folderName == "eSTOL_Training_Tool")
+            if (folderName != "STOL_Training_Tool")
             {
-                RunMigration(currentDir);
+                RunMigration();
                 return;
             }
 
@@ -63,45 +63,59 @@ namespace Bombathlon
             Application.Run(form);
         }
 
-        private static void RunMigration(string oldPath)
+
+        private static void RunMigration()
         {
-            string parentDir = Directory.GetParent(oldPath)!.FullName;
-            string newPath = Path.Combine(parentDir, "STOL_Training_Tool");
+            string currentDir =
+                AppDomain.CurrentDomain.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
 
-            string tempScript = Path.Combine(Path.GetTempPath(), "stol_migrate.ps1");
+            string parent =
+                Directory.GetParent(currentDir)!.FullName;
 
-            string script = @$"
-param(
-    [string]$oldPath,
-    [string]$newPath
-)
+            // New installation location
+            string sibling =
+                Path.Combine(parent, "STOL_Training_Tool");
 
-Start-Sleep -Seconds 2
+            string siblingExe =
+                Path.Combine(sibling, "STOL Training Tool.exe");
 
-if (Test-Path $newPath) {{
-    Remove-Item $newPath -Recurse -Force
-}}
+            // Only migrate from legacy folder
+            string currentFolder =
+                Path.GetFileName(currentDir);
 
-Rename-Item $oldPath ""STOL_Training_Tool""
-
-$exe = Join-Path $newPath ""STOL Training Tool.exe""
-
-Start-Process $exe
-";
-
-            File.WriteAllText(tempScript, script);
-
-            Process.Start(new ProcessStartInfo
+            if (currentFolder != "eSTOL_Training_Tool")
             {
-                FileName = "powershell.exe",
-                Arguments =
-                    $"-ExecutionPolicy Bypass -File \"{tempScript}\" " +
-                    $"\"{oldPath}\" \"{newPath}\"",
-                UseShellExecute = false,
-                CreateNoWindow = true
-            });
+                return;
+            }
 
-            Environment.Exit(0);
+            // New structure not present
+            if (!Directory.Exists(sibling))
+            {
+                return;
+            }
+
+            // New executable missing
+            if (!File.Exists(siblingExe))
+            {
+                return;
+            }
+
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = siblingExe,
+                    WorkingDirectory = sibling,
+                    UseShellExecute = true
+                });
+
+                Environment.Exit(0);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Migration failed:");
+                Console.WriteLine(ex);
+            }
         }
     }
 }
