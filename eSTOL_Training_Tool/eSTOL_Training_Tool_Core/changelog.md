@@ -1,3 +1,7 @@
+v1.4.32
+
+- fixed Taylorcraft
+
 v1.4.31
 
 - fixed Maule Tire index for 2024

@@ -1040,7 +1040,25 @@
         "GearOffset": -0.30,
         "IsTaildragger": true,
         "Key": "MiniMax1500R",
-        "Regex": "^.*|\\$\\$:1500R\\|anything$",
+        "Regex": "^.*\\|\\$\\$:1500R\\|.*",
+        "MaxGForce": 1.5,
+        "MaxVSpeed": -200
+    },
+    {
+        "Class": "",
+        "CollisionNoseIndex": 12,
+        "CollisionPropIndex": 12,
+        "CollisionWheelLeftIndex": 1,
+        "CollisionWheelNoseTailIndex": 0,
+        "CollisionWheelRightIndex": 2,
+        "CollisionWheelWingtipLIndex": 3,
+        "CollisionWheelWingtipRIndex": 4,
+        "PropStrikeThreshold": 90,
+        "DisplayName": "Taylorcraft",
+        "GearOffset": 0.70,
+        "IsTaildragger": true,
+        "Key": "Taylorcraft",
+        "Regex": "^\\$\\$:Taylorcraft\\|\\$\\$:BCE-12D\\|.*",
         "MaxGForce": 1.5,
         "MaxVSpeed": -200
     }
