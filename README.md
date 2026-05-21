@@ -4,7 +4,7 @@
 
 ## Definition
 
-the MSFS eSTOL Training Tool is an external Application that connects via SimConnect ot MSFS and measures and pilots performace while training for STOL competition stile landings, anywhere in the world or on designated fields.  
+the MSFS STOL Training Tool is an external Application that connects via SimConnect ot MSFS and measures and pilots performace while training for STOL competition stile landings, anywhere in the world or on designated fields.  
 It sends telemetry and score data to a database that can be accessed on demand but has not been published yet due to uncertainty with data protection.  
 STOL competition stile landings are compettative maneuvers that aim to takeoff and land a plane as in competitions like:  National STOL, The REAL STOL Fest, FFPLUME,  european stol competition or NZ Bush Pilot Championships.  
 Therefore The tool supports STOL fields recreated in the simulator of: National STOL, The REAL STOL Fest, FFPLUME,  european stol competition.  
@@ -51,7 +51,7 @@ The user can set the startpoint everywhere using parking breake or smoke.
 
 ### Presets
 
-Start Point are provided as preset for known eSTOL Fields
+Start Point are provided as preset for known STOL Fields
 
 ### Preset Creation
 
@@ -85,7 +85,7 @@ start `msts_estol_training_tool.exe`
 
 ```
 ┌─────────────────────┐
-│ eSTOL Training Tool │
+│ STOL Training Tool │
 └─────────────────────┘
 
 Disclaimer:
@@ -124,7 +124,7 @@ the result is show as usual in the result box
 <center><img src="./doc/states.png" alt="states" width="600"/></center>
 
 ## Results upload
-Results are uploaded for National eSTOLO Staff to analyse
+Results are uploaded for STOL competition Staff to analyse
 
 
 
@@ -133,8 +133,8 @@ Results are uploaded for National eSTOLO Staff to analyse
 Application pops up and closes itself directly
 wehn executing on console you can see: 
 ```
-user\estol trainig tool> & 'AeSTOL Training Tool.exe' You must install or update .NET to run this application. 
-App: user\estol trainig tool\eSTOL Training Tool.exe Architecture: x6U Framework: 'Microsoft.NETCore.App', version '9.0.0' (x6U) .NET location: C:\Program Files\dotnet\ 
+user\stol trainig tool> & 'ASTOL Training Tool.exe' You must install or update .NET to run this application. 
+App: user\stol trainig tool\STOL Training Tool.exe Architecture: x6U Framework: 'Microsoft.NETCore.App', version '9.0.0' (x6U) .NET location: C:\Program Files\dotnet\ 
 The following frameworks were found: 6.0.12 at EC:\Program Files\dotnet\shared\Microsoft.NETCore.App] 
 Learn about framework resolution: https://aka.ms/dotnet/app—launch—failed 
 To install missing framework, download: https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=9.0.0&arch=x6U&rid=win10—x6U 
