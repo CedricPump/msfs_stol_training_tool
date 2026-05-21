@@ -8,7 +8,7 @@ namespace STOL_Training_Tool_Core.Core
 {
     internal class VersionHelper
     {
-        private const string currentVersion = "1.4.33";
+        private const string currentVersion = "1.5.0";
         private const string githubApiUrl = "https://api.github.com/repos/CedricPump/msfs_stol_training_tool/releases/latest";
         public static string githubLatestUrl = "https://github.com/CedricPump/msfs_stol_training_tool/releases/latest";
         private const string githubApiUrlFallback = "https://api.github.com/repos/CedricPump/msfs_stol_training_tool/releases/latest";

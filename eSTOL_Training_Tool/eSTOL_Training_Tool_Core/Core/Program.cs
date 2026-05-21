@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using STOL_Training_Tool_Core.Core;
@@ -26,6 +27,8 @@ namespace Bombathlon
             ApplicationConfiguration.Initialize();
             var config = Config.GetInstance();
 
+            CleanupLegacyInstall();
+
             Controller controller = new Controller();
             controller.Init();
             Task controllerTask = Task.Run(() =>
@@ -51,6 +54,56 @@ namespace Bombathlon
             controller.SetUI(form);
 
             Application.Run(form);
+        }
+
+        private static void CleanupLegacyInstall()
+        {
+            try
+            {
+                string currentDir =
+                    AppDomain.CurrentDomain.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar);
+
+                string currentFolder =
+                    Path.GetFileName(currentDir);
+
+                if (currentFolder != "STOL_Training_Tool")
+                {
+                    return;
+                }
+
+                string parent =
+                    Directory.GetParent(currentDir)!.FullName;
+
+                string oldInstall =
+                    Path.Combine(parent, "eSTOL_Training_Tool");
+
+                if (!Directory.Exists(oldInstall))
+                {
+                    return;
+                }
+
+                Thread.Sleep(3000);
+
+                Directory.Delete(oldInstall, true);
+
+                foreach (string file in Directory.GetFiles(currentDir, "eSTOL*.*"))
+                {
+                    try
+                    {
+                        File.Delete(file);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Failed to delete {file}");
+                        Console.WriteLine(ex);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Legacy cleanup failed:");
+                Console.WriteLine(ex);
+            }
         }
     }
 }
