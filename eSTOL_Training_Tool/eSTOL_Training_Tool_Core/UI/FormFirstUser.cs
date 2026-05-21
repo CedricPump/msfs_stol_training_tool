@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace eSTOL_Training_Tool_Core.UI
+namespace STOL_Training_Tool_Core.UI
 {
     public partial class FormFirstUser : Form
     {
@@ -20,7 +20,7 @@ namespace eSTOL_Training_Tool_Core.UI
         {
             System.Diagnostics.Process.Start(new ProcessStartInfo
             {
-                FileName = "https://github.com/CedricPump/msfs_estol_training_tool/blob/main/doc/Privacy_Policy.md",
+                FileName = "https://github.com/CedricPump/msfs_stol_training_tool/blob/main/doc/Privacy_Policy.md",
                 UseShellExecute = true
             });
         }

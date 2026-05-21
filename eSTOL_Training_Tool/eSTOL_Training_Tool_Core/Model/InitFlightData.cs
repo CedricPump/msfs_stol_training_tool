@@ -1,4 +1,4 @@
-﻿namespace eSTOL_Training_Tool.Model
+﻿namespace STOL_Training_Tool.Model
 {
     public class InitFlightData
     {

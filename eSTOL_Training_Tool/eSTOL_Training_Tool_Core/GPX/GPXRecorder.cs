@@ -5,10 +5,10 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml;
-using eSTOL_Training_Tool;
-using eSTOL_Training_Tool_Core.Core;
+using STOL_Training_Tool;
+using STOL_Training_Tool_Core.Core;
 
-namespace eSTOL_Training_Tool_Core.GPX
+namespace STOL_Training_Tool_Core.GPX
 {
     class GPXRecorder
     {
@@ -81,7 +81,7 @@ namespace eSTOL_Training_Tool_Core.GPX
                 writer.WriteStartDocument();
                 writer.WriteStartElement("gpx", "http://www.topografix.com/GPX/1/1");
                 writer.WriteAttributeString("version", "1.1");
-                writer.WriteAttributeString("creator", "eSTOL_Training_tool");
+                writer.WriteAttributeString("creator", "STOL_Training_tool");
                 writer.WriteAttributeString("xmlns", "xsi", null, "http://www.w3.org/2001/XMLSchema-instance");
                 writer.WriteAttributeString("xsi", "schemaLocation", null,
                     "http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd");

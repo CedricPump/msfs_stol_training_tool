@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace eSTOL_Training_Tool
+namespace STOL_Training_Tool
 {
     public class PlaneMetadata
     {

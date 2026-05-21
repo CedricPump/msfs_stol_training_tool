@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using eSTOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Core;
 
-namespace eSTOL_Training_Tool_Core.UI
+namespace STOL_Training_Tool_Core.UI
 {
     internal class UILogger
     {

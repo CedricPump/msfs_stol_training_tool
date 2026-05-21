@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace eSTOL_Training_Tool_Core.UI
+namespace STOL_Training_Tool_Core.UI
 {
     public partial class FormCheckUpdate : Form
     {
@@ -24,13 +24,13 @@ namespace eSTOL_Training_Tool_Core.UI
             if (isUpdateRequired)
             {
                 labelhasVersion.Text = $"An update to version {version} is available. Current version: {currentVersion}";
-                linkLabel.Text = $"https://github.com/CedricPump/msfs_estol_training_tool/releases/tag/{version}";
+                linkLabel.Text = $"https://github.com/CedricPump/msfs_stol_training_tool/releases/tag/{version}";
                 textBoxVersion.Text = version;
             }
             else
             {
                 labelhasVersion.Text = $"Application is up to date: {currentVersion}";
-                linkLabel.Text = "https://github.com/CedricPump/msfs_estol_training_tool/releases";
+                linkLabel.Text = "https://github.com/CedricPump/msfs_stol_training_tool/releases";
             }
             this.TopLevel = true;
         }

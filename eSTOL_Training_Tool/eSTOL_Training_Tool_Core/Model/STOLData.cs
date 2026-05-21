@@ -6,11 +6,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using eSTOL_Training_Tool_Core.Core;
-using eSTOL_Training_Tool_Core.Model;
+using STOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Model;
 using Newtonsoft.Json;
 
-namespace eSTOL_Training_Tool
+namespace STOL_Training_Tool
 {
     public class STOLData 
     {

@@ -10,14 +10,14 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using eSTOL_Training_Tool;
-using eSTOL_Training_Tool_Core.GPX;
-using eSTOL_Training_Tool_Core.Influx;
-using eSTOL_Training_Tool_Core.Model;
-using eSTOL_Training_Tool_Core.UI;
+using STOL_Training_Tool;
+using STOL_Training_Tool_Core.GPX;
+using STOL_Training_Tool_Core.Influx;
+using STOL_Training_Tool_Core.Model;
+using STOL_Training_Tool_Core.UI;
 using Microsoft.FlightSimulator.SimConnect;
 
-namespace eSTOL_Training_Tool_Core.Core
+namespace STOL_Training_Tool_Core.Core
 {
     enum CycleState
     {
@@ -203,7 +203,7 @@ namespace eSTOL_Training_Tool_Core.Core
             try
             {
                 string zipFileName = $"eSTOL_Training_Tool_portable_{version}.zip";
-                string zipUrl = $"https://github.com/CedricPump/msfs_estol_training_tool/releases/download/{version}/{zipFileName}";
+                string zipUrl = $"https://github.com/CedricPump/msfs_stol_training_tool/releases/download/{version}/{zipFileName}";
                 string tempZipPath = Path.Combine(Path.GetTempPath(), "update.zip");
                 string bootstrapperPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "update.ps1");
 

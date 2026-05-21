@@ -2,11 +2,11 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using eSTOL_Training_Tool_Core.Core;
-using eSTOL_Training_Tool_Core.Model;
+using STOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Model;
 using Newtonsoft.Json;
 
-namespace eSTOL_Training_Tool_Core.UI
+namespace STOL_Training_Tool_Core.UI
 {
     public partial class FormCreatePresset : Form
     {

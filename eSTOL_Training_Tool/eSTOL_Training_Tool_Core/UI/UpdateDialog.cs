@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using eSTOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Core;
 
-namespace eSTOL_Training_Tool_Core.UI
+namespace STOL_Training_Tool_Core.UI
 {
     public partial class UpdateDialog : Form
     {
@@ -52,7 +52,7 @@ namespace eSTOL_Training_Tool_Core.UI
             linkLabel.Size = new System.Drawing.Size(391, 15);
             linkLabel.TabIndex = 1;
             linkLabel.TabStop = true;
-            linkLabel.Text = "https://github.com/CedricPump/msfs_estol_training_tool/releases/latest";
+            linkLabel.Text = "https://github.com/CedricPump/msfs_stol_training_tool/releases/latest";
             linkLabel.LinkClicked += linkLabel_LinkClicked;
             // 
             // buttonUpdate

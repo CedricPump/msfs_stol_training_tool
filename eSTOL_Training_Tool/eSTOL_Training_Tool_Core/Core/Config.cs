@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.Json;
 
 
-namespace eSTOL_Training_Tool_Core.Core
+namespace STOL_Training_Tool_Core.Core
 {
     public class Config
     {

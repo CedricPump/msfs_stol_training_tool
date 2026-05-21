@@ -4,25 +4,32 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace eSTOL_Training_Tool_Core.Core
+namespace STOL_Training_Tool_Core.Core
 {
     internal class VersionHelper
     {
         private const string currentVersion = "1.4.32";
-        private const string githubApiUrl = "https://api.github.com/repos/CedricPump/msfs_estol_training_tool/releases/latest";
-        public static string githubLatestUrl = "https://github.com/CedricPump/msfs_estol_training_tool/releases/latest";
+        private const string githubApiUrl = "https://api.github.com/repos/CedricPump/msfs_stol_training_tool/releases/latest";
+        public static string githubLatestUrl = "https://github.com/CedricPump/msfs_stol_training_tool/releases/latest";
+        private const string githubApiUrlFallback = "https://api.github.com/repos/CedricPump/msfs_stol_training_tool/releases/latest";
+        public static string githubLatestUrlFallback = "https://github.com/CedricPump/msfs_stol_training_tool/releases/latest";
 
         public static async Task<string> CheckForUpdateAsync()
         {
             using HttpClient client = new HttpClient();
 
             // GitHub API requires a user-agent header
-            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("eSTOL_Training_Tool", currentVersion));
+            client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("STOL_Training_Tool", currentVersion));
 
             try
             {
                 HttpResponseMessage response = await client.GetAsync(githubApiUrl);
-                response.EnsureSuccessStatusCode();
+                try { response.EnsureSuccessStatusCode(); }
+                catch (HttpRequestException e)
+                {
+                    response = await client.GetAsync(githubApiUrlFallback);
+                    response.EnsureSuccessStatusCode();
+                }
 
                 string json = await response.Content.ReadAsStringAsync();
                 using JsonDocument doc = JsonDocument.Parse(json);

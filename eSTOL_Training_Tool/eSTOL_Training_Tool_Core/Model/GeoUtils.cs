@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Device.Location;
 
-namespace eSTOL_Training_Tool
+namespace STOL_Training_Tool
 {
     public static class GeoUtils
     {

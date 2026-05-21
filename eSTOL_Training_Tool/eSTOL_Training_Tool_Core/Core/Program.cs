@@ -2,8 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using eSTOL_Training_Tool_Core.Core;
-using eSTOL_Training_Tool_Core.UI;
+using STOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.UI;
 
 namespace Bombathlon
 {
@@ -20,7 +20,7 @@ namespace Bombathlon
             // Influx.GetInstance().deletAll();
             Console.WriteLine(
                 "┌─────────────────────┐\n" +
-                "│ eSTOL Training Tool │\n" +
+                "│ STOL Training Tool │\n" +
                 "└─────────────────────┘\n");
 
             ApplicationConfiguration.Initialize();

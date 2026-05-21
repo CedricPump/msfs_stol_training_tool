@@ -1,4 +1,4 @@
-﻿namespace eSTOL_Training_Tool_Core.UI
+﻿namespace STOL_Training_Tool_Core.UI
 {
     partial class FormUI
     {
@@ -676,7 +676,7 @@
             Controls.Add(textBoxResult);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "FormUI";
-            Text = "eSTOL Training Tool";
+            Text = "STOL Training Tool";
             Load += FormUI_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDownStopwatchOffest).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownTransparency).EndInit();

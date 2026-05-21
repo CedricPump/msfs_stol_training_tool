@@ -5,12 +5,12 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using eSTOL_Training_Tool;
-using eSTOL_Training_Tool_Core.Core;
-using eSTOL_Training_Tool_Core.Model;
+using STOL_Training_Tool;
+using STOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Model;
 
 
-namespace eSTOL_Training_Tool_Core.UI
+namespace STOL_Training_Tool_Core.UI
 {
     public partial class FormUI : Form
     {
@@ -81,13 +81,13 @@ namespace eSTOL_Training_Tool_Core.UI
             alwaysontop = config.alwaysOnTop;
             this.checkBoxOntop.Checked = alwaysontop;
 
-            this.Text = "eSTOL Training Tool " + VersionHelper.GetVersion();
+            this.Text = "STOL Training Tool " + VersionHelper.GetVersion();
 
             this.controller = controller;
             textBoxUser.Text = controller.user;
             textBoxStatus.Text = "No Reference Position selected";
             buttonTeleport.Enabled = false;
-            this.appendResult($"Welcome\r\n\r\nSelect a eSTOL field preset or \"Open World\" mode set custom start.");
+            this.appendResult($"Welcome\r\n\r\nSelect a STOL field preset or \"Open World\" mode set custom start.");
 
             if (config.ConnectionType == "REST")
             {
@@ -473,7 +473,7 @@ namespace eSTOL_Training_Tool_Core.UI
             if (config.isSendResults && !config.hasPrivacyConfirmed)
             {
                 MessageBox.Show("By enabeling, you agree that your landing result data will be temporarily stored for up to 30 days and may be shown on a public dashboard.\r\n" +
-                "For more information, see the privacy policy: https://github.com/CedricPump/msfs_estol_training_tool/blob/main/doc/Privacy_Policy.md");
+                "For more information, see the privacy policy: https://github.com/CedricPump/msfs_stol_training_tool/blob/main/doc/Privacy_Policy.md");
                 config.hasPrivacyConfirmed = true;
             }
             config.Save();
@@ -492,7 +492,7 @@ namespace eSTOL_Training_Tool_Core.UI
             if (config.isSendTelemetry && !config.hasPrivacyConfirmed)
             {
                 MessageBox.Show("By enabeling, you agree that your ingame telemetry data will be temporarily stored for up to 30 days and may be shown on a public dashboard.\r\n" +
-                "For more information, see the privacy policy: https://github.com/CedricPump/msfs_estol_training_tool/blob/main/doc/Privacy_Policy.md");
+                "For more information, see the privacy policy: https://github.com/CedricPump/msfs_stol_training_tool/blob/main/doc/Privacy_Policy.md");
                 config.hasPrivacyConfirmed = true;
             }
             config.Save();

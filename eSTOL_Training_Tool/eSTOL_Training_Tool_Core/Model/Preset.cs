@@ -4,10 +4,10 @@ using System.Device.Location;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
-using eSTOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Core;
 using Newtonsoft.Json;
 
-namespace eSTOL_Training_Tool_Core.Model
+namespace STOL_Training_Tool_Core.Model
 {
     public class Preset
     {
@@ -43,7 +43,7 @@ namespace eSTOL_Training_Tool_Core.Model
             try
             {
                 string json;
-                using Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eSTOL_Training_Tool_Core.presets.json");
+                using Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("STOL_Training_Tool_Core.presets.json");
                 using StreamReader reader = new StreamReader(stream);
                 json = reader.ReadToEnd();
                 List<Preset> custom = JsonConvert.DeserializeObject<List<Preset>>(json);

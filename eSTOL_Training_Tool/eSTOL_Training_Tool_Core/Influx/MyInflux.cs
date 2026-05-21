@@ -1,13 +1,13 @@
 ﻿using System;
-using eSTOL_Training_Tool;
+using STOL_Training_Tool;
 using InfluxDB.Client;
 using InfluxDB.Client.Api.Domain;
 using InfluxDB.Client.Writes;
-using eSTOL_Training_Tool.Model;
-using eSTOL_Training_Tool_Core.Core;
+using STOL_Training_Tool.Model;
+using STOL_Training_Tool_Core.Core;
 
 
-namespace eSTOL_Training_Tool_Core.Influx
+namespace STOL_Training_Tool_Core.Influx
 {
     public class MyInflux
     {

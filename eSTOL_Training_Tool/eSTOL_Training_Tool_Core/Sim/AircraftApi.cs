@@ -4,10 +4,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using eSTOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Core;
 using Newtonsoft.Json;
 
-namespace eSTOL_Training_Tool
+namespace STOL_Training_Tool
 {
     public class AircraftApi : Plane
     {
@@ -193,7 +193,7 @@ namespace eSTOL_Training_Tool
 
         private async Task HandleRootAsync(HttpListenerContext ctx)
         {
-            string info = $"eSTOL REST API running on {host}:{port}";
+            string info = $"STOL REST API running on {host}:{port}";
             await TryWrite(ctx, info);
         }
 

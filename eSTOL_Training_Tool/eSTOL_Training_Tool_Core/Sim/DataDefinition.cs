@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace eSTOL_Training_Tool
+namespace STOL_Training_Tool
 {
     enum DATA_DEFINE_ID
     {

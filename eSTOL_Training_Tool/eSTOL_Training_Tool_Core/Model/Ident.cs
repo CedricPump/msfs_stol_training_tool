@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eSTOL_Training_Tool.Model
+namespace STOL_Training_Tool.Model
 {
     public class Ident
     {

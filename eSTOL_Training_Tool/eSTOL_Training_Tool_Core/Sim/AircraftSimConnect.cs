@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using eSTOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Core;
 using Microsoft.FlightSimulator.SimConnect;
 
-namespace eSTOL_Training_Tool
+namespace STOL_Training_Tool
 {
     public class AircraftSimConnect : Plane
     {
@@ -34,7 +34,7 @@ namespace eSTOL_Training_Tool
             this.IsSimConnected = false;
             this.conf = Config.GetInstance();
             ConnectSimConnect();
-            // simconnect.Text(SIMCONNECT_TEXT_TYPE.SCROLL_GREEN, 5.0f, null, "eSTOL_Training_Tool connected");
+            // simconnect.Text(SIMCONNECT_TEXT_TYPE.SCROLL_GREEN, 5.0f, null, "STOL_Training_Tool connected");
         }
 
         private void InitSimConnect(SimConnect sender, SIMCONNECT_RECV_OPEN data)

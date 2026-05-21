@@ -1,4 +1,4 @@
-﻿namespace eSTOL_Training_Tool_Core.UI
+﻿namespace STOL_Training_Tool_Core.UI
 {
     partial class FormFirstUser
     {

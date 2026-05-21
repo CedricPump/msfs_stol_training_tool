@@ -2,12 +2,12 @@
 using System.Device.Location;
 using System.Reflection;
 using System.Threading.Tasks;
-using eSTOL_Training_Tool.Model;
-using eSTOL_Training_Tool_Core.Core;
-using eSTOL_Training_Tool_Core.Model;
+using STOL_Training_Tool.Model;
+using STOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.Model;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 
-namespace eSTOL_Training_Tool
+namespace STOL_Training_Tool
 {
     public abstract class Aircraft
     {

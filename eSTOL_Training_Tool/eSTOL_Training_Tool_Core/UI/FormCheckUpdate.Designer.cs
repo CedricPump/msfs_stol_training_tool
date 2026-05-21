@@ -1,4 +1,4 @@
-﻿namespace eSTOL_Training_Tool_Core.UI
+﻿namespace STOL_Training_Tool_Core.UI
 {
     partial class FormCheckUpdate
     {
@@ -62,7 +62,7 @@
             linkLabel.Size = new System.Drawing.Size(391, 15);
             linkLabel.TabIndex = 1;
             linkLabel.TabStop = true;
-            linkLabel.Text = "https://github.com/CedricPump/msfs_estol_training_tool/releases/latest";
+            linkLabel.Text = "https://github.com/CedricPump/msfs_stol_training_tool/releases/latest";
             linkLabel.LinkClicked += linkLabel_LinkClicked;
             // 
             // label2

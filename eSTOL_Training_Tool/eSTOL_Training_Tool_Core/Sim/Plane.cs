@@ -1,7 +1,7 @@
 ﻿using System;
-using eSTOL_Training_Tool.Model;
+using STOL_Training_Tool.Model;
 
-namespace eSTOL_Training_Tool
+namespace STOL_Training_Tool
 {
     public abstract class Plane : Aircraft
     {

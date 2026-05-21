@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
-using eSTOL_Training_Tool.Model;
-using eSTOL_Training_Tool_Core.Core;
-using eSTOL_Training_Tool_Core.UI;
+using STOL_Training_Tool.Model;
+using STOL_Training_Tool_Core.Core;
+using STOL_Training_Tool_Core.UI;
 
-namespace eSTOL_Training_Tool_Core.Model
+namespace STOL_Training_Tool_Core.Model
 {
     public static class PlaneConfigsService
     {
@@ -17,7 +17,7 @@ namespace eSTOL_Training_Tool_Core.Model
         public static int LoadPlaneConfigs()
         {
             var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            using Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("eSTOL_Training_Tool_Core.PlanesConfig.json");
+            using Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("STOL_Training_Tool_Core.PlanesConfig.json");
 
             using StreamReader reader = new StreamReader(stream);
             string json = reader.ReadToEnd();
