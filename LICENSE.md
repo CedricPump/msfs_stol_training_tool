@@ -22,4 +22,13 @@ Commercial use includes, but is not limited to:
 - mandatory paid competition infrastructure
 - monetized hosted services using the software
 
+# Contributing
+
+Contributions are welcome through GitHub pull requests.
+
+By submitting a contribution, you confirm that:
+- you have the right to submit the code
+- your contribution may be distributed under this project's license
+- you understand that this project is licensed for non-commercial use only
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
