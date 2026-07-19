@@ -202,7 +202,7 @@ namespace STOL_Training_Tool_Core.Core
         {
             try
             {
-                string zipFileName = $"eSTOL_Training_Tool_portable_{version}.zip";
+                string zipFileName = $"STOL_Training_Tool_portable_{version}.zip";
                 string zipUrl = $"https://github.com/CedricPump/msfs_stol_training_tool/releases/download/{version}/{zipFileName}";
                 string tempZipPath = Path.Combine(Path.GetTempPath(), "update.zip");
                 string bootstrapperPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "update.ps1");

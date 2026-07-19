@@ -1,253 +1,253 @@
 [
 	{
 		"title": "3R7 - Jennings N (Swamp STOL)",
-		"start_lat":   30.241737,
+		"start_lat": 30.241737,
 		"start_long": -92.667863,
-		"start_alt":   8,
-		"start_hdg":   0
+		"start_alt": 8,
+		"start_hdg": 0
 	},
 	{
 		"title": "3R7 - Jennings S (Swamp STOL)",
-		"start_lat":   30.243387,
+		"start_lat": 30.243387,
 		"start_long": -92.667860,
-		"start_alt":    8,
-		"start_hdg":  180
+		"start_alt": 8,
+		"start_hdg": 180
 	},
 	{
 		"title": "42VA - Virginia Beach W (Heritage STOL)",
-		"start_lat":   36.678333,
+		"start_lat": 36.678333,
 		"start_long": -76.029325,
-		"start_alt":   3,
+		"start_alt": 3,
 		"start_hdg": 282
 	},
 	{
 		"title": "42VA - Virginia Beach E (Heritage STOL)",
-		"start_lat":   36.678712,
+		"start_lat": 36.678712,
 		"start_long": -76.031317,
-		"start_alt":    3,
-		"start_hdg":  102
+		"start_alt": 3,
+		"start_hdg": 102
 	},
 	{
 		"title": "KSTJ - St. Joseph S (Pony Express)",
-		"start_lat":   39.775342,
+		"start_lat": 39.775342,
 		"start_long": -94.905550,
-		"start_alt":   249,
-		"start_hdg":   180
+		"start_alt": 249,
+		"start_hdg": 180
 	},
 	{
 		"title": "KSTJ - St. Joseph N (Pony Express)",
-		"start_lat":   39.773694,
+		"start_lat": 39.773694,
 		"start_long": -94.905552,
-		"start_alt":   249,
-		"start_hdg":   0
+		"start_alt": 249,
+		"start_hdg": 0
 	},
 	{
 		"title": "KONO - Ontario Mun S (Oregon Trail)",
-		"start_lat":    44.020739,
+		"start_lat": 44.020739,
 		"start_long": -117.014478,
 		"start_alt": 665,
 		"start_hdg": 158
 	},
 	{
 		"title": "KONO - Ontario Mun N (Oregon Trail)",
-		"start_lat":    44.019202,
+		"start_lat": 44.019202,
 		"start_long": -117.013662,
-		"start_alt":   665,
-		"start_hdg":   338
+		"start_alt": 665,
+		"start_hdg": 338
 	},
 	{
 		"title": "KMWH - Grant Co Intl SW (Moses Lake)",
-		"start_lat":    47.20139,
+		"start_lat": 47.20139,
 		"start_long": -119.326437,
-		"start_alt":   358,
-		"start_hdg":   234
+		"start_alt": 358,
+		"start_hdg": 234
 	},
 	{
 		"title": "KMWH - Grant Co Intl NE (Moses Lake)",
-		"start_lat":    47.200428,
+		"start_lat": 47.200428,
 		"start_long": -119.328395,
-		"start_alt":   359,
-		"start_hdg":    54
+		"start_alt": 359,
+		"start_hdg": 54
 	},
 	{
-		"title": "KHXF - Hardford Municipal S (Sodbusters)",
-		"start_lat":   43.349298,
-		"start_long": -88.391102,
-		"start_alt":  321,
-		"start_hdg":  184
+		"title": "KHXF - Hardford Municipal W (Sodbusters)",
+		"start_lat": 43.347570,
+		"start_long": -88.3880776,
+		"start_alt": 319.368049595,
+		"start_hdg": 274.291100
 	},
 	{
-		"title": "KHXF - Hardford Municipal N (Sodbusters)",
-		"start_lat":   43.347656,
-		"start_long": -88.391259,
-		"start_alt":  320,
-		"start_hdg":    4
+		"title": "KHXF - Hardford Municipal E (Sodbusters)",
+		"start_lat": 43.347701,
+		"start_long": -88.3903296,
+		"start_alt": 319.372551530,
+		"start_hdg": 94.291100
 	},
 	{
 		"title": "KPNA - Ralph Wenz Field NW (Rocky Mountain)",
-		"start_lat":    42.792907,
+		"start_lat": 42.792907,
 		"start_long": -109.800826,
-		"start_alt":  2154,
-		"start_hdg":   303
+		"start_alt": 2154,
+		"start_hdg": 303
 	},
 	{
 		"title": "KPNA - Ralph Wenz Field SE (Rocky Mountain)",
-		"start_lat":    42.793814,
+		"start_lat": 42.793814,
 		"start_long": -109.802692,
-		"start_alt":  2154,
-		"start_hdg":   123
+		"start_alt": 2154,
+		"start_hdg": 123
 	},
 	{
 		"title": "OL42 - Pocola NW (Arklahoma)",
-		"start_lat":   35.261874,
+		"start_lat": 35.261874,
 		"start_long": -94.488691,
-		"start_alt":  130,
-		"start_hdg":  307
+		"start_alt": 130,
+		"start_hdg": 307
 	},
 	{
 		"title": "OL42 - Pocola SE (Arklahoma)",
-		"start_lat":   35.262900,
+		"start_lat": 35.262900,
 		"start_long": -94.490263,
-		"start_alt":  129,
-		"start_hdg":  127
+		"start_alt": 129,
+		"start_hdg": 127
 	},
 	{
 		"title": "KXNX - Gallatin N (Music City)",
-		"start_lat":   36.376647,
+		"start_lat": 36.376647,
 		"start_long": -86.409182,
-		"start_alt":  166,
-		"start_hdg":  351
+		"start_alt": 166,
+		"start_hdg": 351
 	},
 	{
 		"title": "KXNX - Gallatin S (Music City)",
-		"start_lat":   36.378274,
+		"start_lat": 36.378274,
 		"start_long": -86.409501,
-		"start_alt":  166,
-		"start_hdg":  171
+		"start_alt": 166,
+		"start_hdg": 171
 	},
 	{
 		"title": "KSLR - Sulphur Springs N (Lonestar)",
-		"start_lat":   33.159031,
+		"start_lat": 33.159031,
 		"start_long": -95.620804,
-		"start_alt":  144,
-		"start_hdg":    9
+		"start_alt": 144,
+		"start_hdg": 9
 	},
 	{
 		"title": "KSLR - Sulphur Springs S (Lonestar)",
-		"start_lat":   33.160656,
+		"start_lat": 33.160656,
 		"start_long": -95.620472,
-		"start_alt":  144,
-		"start_hdg":  189
+		"start_alt": 144,
+		"start_hdg": 189
 	},
 	{
 		"title": "ESTOL - National eSTOL Training Grounds N",
-		"start_lat":   39.040391,
+		"start_lat": 39.040391,
 		"start_long": -96.073008,
-		"start_alt":  393,
-		"start_hdg":  356
+		"start_alt": 393,
+		"start_hdg": 356
 	},
 	{
 		"title": "ESTOL - National eSTOL Training Grounds S",
-		"start_lat":   39.042037,
+		"start_lat": 39.042037,
 		"start_long": -96.073107,
-		"start_alt":  393,
-		"start_hdg":  176
+		"start_alt": 393,
+		"start_hdg": 176
 	},
 	{
 		"title": "KAXQ - Clarion Country SW (Appalachian Mountain)",
-		"start_lat":   41.225094,
+		"start_lat": 41.225094,
 		"start_long": -79.440936,
-		"start_alt":  445,
-		"start_hdg":  227
+		"start_alt": 445,
+		"start_hdg": 227
 	},
 	{
 		"title": "KAXQ - Clarion Country NE (Appalachian Mountain)",
-		"start_lat":   41.223922,
+		"start_lat": 41.223922,
 		"start_long": -79.442474,
-		"start_alt":  445,
-		"start_hdg":   45
+		"start_alt": 445,
+		"start_hdg": 45
 	},
 	{
 		"title": "L06 - Furnace Creek N (Death Valey)",
-		"start_lat":    36.460806,
+		"start_lat": 36.460806,
 		"start_long": -116.879952,
-		"start_alt":   -63,
-		"start_hdg":   341
+		"start_alt": -63,
+		"start_hdg": 341
 	},
 	{
 		"title": "L06 - Furnace Creek S (Death Valey)",
-		"start_lat":    36.462377,
+		"start_lat": 36.462377,
 		"start_long": -116.880568,
-		"start_alt":   -63,
-		"start_hdg":   161
+		"start_alt": -63,
+		"start_hdg": 161
 	},
 	{
 		"title": "0VJF - Johnsons Farm NW",
-		"start_lat":    40.146159,
+		"start_lat": 40.146159,
 		"start_long": -122.461814,
-		"start_alt":   194,
-		"start_hdg":   306
+		"start_alt": 194,
+		"start_hdg": 306
 	},
 	{
 		"title": "0VJF - Johnsons Farm SE",
-		"start_lat":    40.147122,
+		"start_lat": 40.147122,
 		"start_long": -122.463556,
-		"start_alt":   194,
-		"start_hdg":   126
+		"start_alt": 194,
+		"start_hdg": 126
 	},
-    {
+	{
 		"title": "EHLE - RW05 FSWeekend",
 		"start_lat": 52.450379676272604,
 		"start_long": 5.504371516360817,
 		"start_alt": -3.316349375096178,
 		"start_hdg": 47.546
-    },
-    {
+	},
+	{
 		"title": "EHLE - RW23 FSWeekend",
 		"start_lat": 52.45148488463379,
 		"start_long": 5.506368665493265,
 		"start_alt": -3.985656538338624,
 		"start_hdg": 227.546
-    },
+	},
 	{
 		"title": "EGBR - Breighton E (The Real STOL Fest)",
-		"start_lat":  53.803070,
+		"start_lat": 53.803070,
 		"start_long": -0.919095,
-		"start_alt":  10,
+		"start_alt": 10,
 		"start_hdg": 103
 	},
 	{
 		"title": "EGBR - Breighton W (The Real STOL Fest)",
-		"start_lat":  53.802747,
+		"start_lat": 53.802747,
 		"start_long": -0.916115,
-		"start_alt":   9,
+		"start_alt": 9,
 		"start_hdg": 278
 	},
 	{
 		"title": "LKSZ - Sazena N (European STOL Competition)",
-		"start_lat":  50.320518,
+		"start_lat": 50.320518,
 		"start_long": 14.263150,
 		"start_alt": 234,
 		"start_hdg": 325
 	},
 	{
 		"title": "LKSZ - Sazena S (European STOL Competition)",
-		"start_lat":  50.322009,
+		"start_lat": 50.322009,
 		"start_long": 14.261597,
 		"start_alt": 235,
 		"start_hdg": 145
 	},
 	{
 		"title": "LFIF - Belmont W (FFPLUM STOL Competition)",
-		"start_lat":  43.822415,
-		"start_long":  2.748299,
+		"start_lat": 43.822415,
+		"start_long": 2.748299,
 		"start_alt": 515,
 		"start_hdg": 297
 	},
 	{
 		"title": "LFIF - Belmont E (FFPLUM STOL Competition)",
-		"start_lat":  43.823283,
-		"start_long":  2.746134,
+		"start_lat": 43.823283,
+		"start_long": 2.746134,
 		"start_alt": 513,
 		"start_hdg": 118
 	}
