@@ -1,3 +1,15 @@
+v1.5.1
+
+- added new fiel coordinates for KHXF
+
+v1.5.0 
+
+- migration
+
+v1.4.32
+
+- fixed Taylorcraft
+
 v1.4.32
 
 - fixed Taylorcraft
