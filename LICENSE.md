@@ -1,4 +1,4 @@
-Copyright © 2025 Cedric Pump
+Copyright © 2026 Cedric Badura
 
 All rights reserved.
 
@@ -8,7 +8,7 @@ for non-commercial purposes only.
 You may distribute unmodified or modified versions of this
 software only if:
 - this copyright notice and license are retained
-- full corresponding source code is made available
+- full corresponding source code is made available publicly
 - no fee is charged for the software itself
 - the software is not included in any payware product or service
 
