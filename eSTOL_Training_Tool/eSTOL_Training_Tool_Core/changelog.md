@@ -1,6 +1,7 @@
 v1.5.1
 
 - added new fiel coordinates for KHXF
+- fixed altitude reading for KPNA
 
 v1.5.0 
 

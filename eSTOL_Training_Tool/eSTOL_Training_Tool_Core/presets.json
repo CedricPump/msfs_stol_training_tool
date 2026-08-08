@@ -70,32 +70,46 @@
 		"start_hdg": 54
 	},
 	{
-		"title": "KHXF - Hardford Municipal W (Sodbusters)",
+		"title": "KHXF - 2025 Hardford Municipal S (Sodbusters)",
+		"start_lat": 43.349298,
+		"start_long": -88.391102,
+		"start_alt": 321,
+		"start_hdg": 184
+	},
+	{
+		"title": "KHXF - 2025 Hardford Municipal N (Sodbusters)",
+		"start_lat": 43.347656,
+		"start_long": -88.391259,
+		"start_alt": 320,
+		"start_hdg": 4
+	},
+	{
+		"title": "KHXF - 2026 Hardford Municipal W (Sodbusters)",
 		"start_lat": 43.347570,
 		"start_long": -88.3880776,
-		"start_alt": 319.368049595,
+		"start_alt": 329.4,
 		"start_hdg": 274.291100
 	},
 	{
-		"title": "KHXF - Hardford Municipal E (Sodbusters)",
+		"title": "KHXF - 2026 Hardford Municipal E (Sodbusters)",
 		"start_lat": 43.347701,
 		"start_long": -88.3903296,
-		"start_alt": 319.372551530,
+		"start_alt": 329.4,
 		"start_hdg": 94.291100
 	},
 	{
-		"title": "KPNA - Ralph Wenz Field NW (Rocky Mountain)",
+		"title": "KPNA - 2026 Ralph Wenz Field NW (Rocky Mountain)",
 		"start_lat": 42.792907,
 		"start_long": -109.800826,
-		"start_alt": 2154,
-		"start_hdg": 303
+		"start_alt": 2155.7,
+		"start_hdg": 300
 	},
 	{
-		"title": "KPNA - Ralph Wenz Field SE (Rocky Mountain)",
+		"title": "KPNA - 2026 Ralph Wenz Field SE (Rocky Mountain)",
 		"start_lat": 42.793814,
 		"start_long": -109.802692,
-		"start_alt": 2154,
-		"start_hdg": 123
+		"start_alt": 2155.7,
+		"start_hdg": 120
 	},
 	{
 		"title": "OL42 - Pocola NW (Arklahoma)",
