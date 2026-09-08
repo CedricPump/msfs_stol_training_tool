@@ -210,6 +210,20 @@
 		"start_hdg": 126
 	},
 	{
+		"title": "77S - Creswell S (Out West)",
+		"start_lat": 43.93069433611337,
+		"start_long": -123.00668701925063,
+		"start_alt": 163.03781684339071,
+		"start_hdg": 173.73474495566145
+	},
+	{
+		"title": "77S - Creswell N (Out West)",
+		"start_lat": 43.92905439208094,
+		"start_long": -123.00644824607011,
+		"start_alt": 162.48010835740263,
+		"start_hdg": 354.3281901720729
+	},
+	{
 		"title": "EHLE - RW05 FSWeekend",
 		"start_lat": 52.450379676272604,
 		"start_long": 5.504371516360817,
