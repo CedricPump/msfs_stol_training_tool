@@ -10,6 +10,9 @@ namespace Bombathlon
 {
     static class Program
     {
+        // WinForms needs an STA UI thread - shell dialogs like
+        // FolderBrowserDialog throw ThreadStateException without it.
+        [STAThread]
         static void Main(string[] args)
         {
             var logFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "debug.log");

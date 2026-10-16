@@ -273,11 +273,13 @@ namespace STOL_Training_Tool_Core.Core
 
         public void SetUser(string username)
         {
-            using (StreamWriter writer = new StreamWriter(config.UserPath))
-            {
-                writer.WriteLine(username);
-                user = username;
-            }
+            // Only replace line 1 - later lines hold other settings (e.g. the
+            // saved Community folder, see MsfsPanelInstall).
+            var lines = File.Exists(config.UserPath) ? File.ReadAllLines(config.UserPath).ToList() : new List<string>();
+            if (lines.Count == 0) lines.Add("");
+            lines[0] = username;
+            File.WriteAllLines(config.UserPath, lines);
+            user = username;
             stol.user = username;
         }
 
