@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssetPackage Version="1.0.0">
+	<ItemSettings>
+		<ContentType>UNKNOWN</ContentType>
+		<Title>stol-training-panel</Title>
+		<Manufacturer>smitty</Manufacturer>
+		<Creator>smitty</Creator>
+	</ItemSettings>
+	<Flags>
+		<VisibleInStore>false</VisibleInStore>
+		<CanBeReferenced>false</CanBeReferenced>
+	</Flags>
+	<PackageOrderHint>UI_PATCH</PackageOrderHint>
+	<AssetGroups>
+		<AssetGroup Name="stol-training-panel">
+			<Type Version="0">SPB</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageSources\</AssetDir>
+			<OutputDir>Build\</OutputDir>
+		</AssetGroup>
+	</AssetGroups>
+</AssetPackage>
+

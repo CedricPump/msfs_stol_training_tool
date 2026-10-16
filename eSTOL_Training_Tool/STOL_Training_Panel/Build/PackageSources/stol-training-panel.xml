@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<SimBase.Document Type="InGamePanels" version="1,0">
+  <Filename>InGamePanel_STOLTrainingPanel.spb</Filename>
+  <InGamePanels.InGamePanelDefinition id="PANEL_STOL_TRAINING_V2" Name="STOL Training" url="html_UI/ingamePanels/STOLTrainingPanel/STOLTrainingPanel.html" resizeDirections="Both" minWidth="40" minHeight="42" defaultWidth="45" defaultHeight="60" defaultTop="20" defaultRight="2" icon="ICON_TOOLBAR_STOL_TRAINING" buttonVisible="true">
+  </InGamePanels.InGamePanelDefinition>
+</SimBase.Document>

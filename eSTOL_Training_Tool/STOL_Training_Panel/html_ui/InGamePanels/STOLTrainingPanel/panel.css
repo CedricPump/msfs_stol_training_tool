@@ -1,0 +1,235 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 24, 28, 0.92);
+  font-family: "Segoe UI", Roboto, sans-serif;
+  color: #f0f0f0;
+  overflow: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+#header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 9px 8px;
+  margin: -8px -8px 2px -8px;
+  background: #1c1f26;
+  border-bottom: 2px solid #43c07a;
+}
+
+#headerTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#headerLogo {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #f0f0f0;
+  white-space: nowrap;
+}
+
+#scaleControl {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.scaleBtn {
+  /* A first attempt at 32px still read as "barely bigger" in a VR headset,
+     where the whole panel occupies a small angular size - going straight to
+     a real touch-target size (44px, the common iOS/Android HIG minimum)
+     instead of nudging incrementally again. */
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #444a58;
+  background: #2a2e38;
+  color: #e8e8ec;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.scaleBtn:active {
+  background: #2f8a5c;
+  border-color: #43c07a;
+}
+
+#scaleLabel {
+  min-width: 58px;
+  text-align: center;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  color: #9aa0ac;
+}
+
+#clockValue {
+  color: #7a828b;
+  transition: color 0.2s ease;
+}
+
+#clockValue.running {
+  color: #6fe0a0;
+}
+
+#alignedBar {
+  flex: 0 0 auto;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border-radius: 6px;
+  background: #808080;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.tile {
+  flex: 1 1 0;
+  min-width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 5px 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tile.wind {
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tile.score {
+  flex: 1 1 100%;
+  background: rgba(67, 192, 122, 0.12);
+  border: 1px solid rgba(67, 192, 122, 0.35);
+}
+
+.tile.score .value {
+  font-size: 24px;
+  color: #6fe0a0;
+}
+
+.tile.score.scratch {
+  background: rgba(255, 40, 40, 0.16);
+  border-color: rgba(255, 40, 40, 0.55);
+}
+
+.tile.score .value.scratch {
+  color: #ff2828;
+}
+
+.tile.remarks {
+  flex: 1 1 100%;
+}
+
+.tile.remarks .value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9aa4ad;
+}
+
+.remarkChip {
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Same severity scale and colors as the desktop app's deviations list:
+   0=Remark, 1=Warning, 2=Deviation, 3=Violation. */
+.remarkChip.sev0 { color: #d3d3d3; }
+.remarkChip.sev1 { color: #ffff00; }
+.remarkChip.sev2 { color: #ffa500; }
+.remarkChip.sev3 { color: #ff0000; }
+
+.label {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #9aa4ad;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.windReadout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.compassRing {
+  fill: rgba(255, 255, 255, 0.04);
+  stroke: #5b6570;
+  stroke-width: 2;
+}
+
+.compassHub {
+  fill: #9aa4ad;
+}
+
+.compassArrowHead {
+  fill: #43c07a;
+}
+
+.compassArrow {
+  stroke: #43c07a;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.connStatus {
+  flex: 0 0 auto;
+  text-align: center;
+  font-size: 11px;
+  color: #ff8b8b;
+}
+
+.connStatus.hidden {
+  display: none;
+}

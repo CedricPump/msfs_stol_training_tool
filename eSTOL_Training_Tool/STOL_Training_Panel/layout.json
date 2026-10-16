@@ -1,0 +1,44 @@
+{
+  "content": [
+    {
+      "path": "html_ui/InGamePanels/STOLTrainingPanel/STOLTrainingPanel.css",
+      "size": 1342,
+      "date": 133700000000000000
+    },
+    {
+      "path": "html_ui/InGamePanels/STOLTrainingPanel/STOLTrainingPanel.html",
+      "size": 1841,
+      "date": 133700000000000000
+    },
+    {
+      "path": "html_ui/InGamePanels/STOLTrainingPanel/STOLTrainingPanel.js",
+      "size": 2266,
+      "date": 133700000000000000
+    },
+    {
+      "path": "html_ui/InGamePanels/STOLTrainingPanel/panel.html",
+      "size": 3541,
+      "date": 133700000000000000
+    },
+    {
+      "path": "html_ui/InGamePanels/STOLTrainingPanel/panel.js",
+      "size": 9042,
+      "date": 133700000000000000
+    },
+    {
+      "path": "html_ui/InGamePanels/STOLTrainingPanel/panel.css",
+      "size": 3992,
+      "date": 133700000000000000
+    },
+    {
+      "path": "html_ui/icons/toolbar/icon_toolbar_stol_training.svg",
+      "size": 10450,
+      "date": 133700000000000000
+    },
+    {
+      "path": "InGamePanels/stol-training-panel.spb",
+      "size": 900,
+      "date": 133700000000000000
+    }
+  ]
+}

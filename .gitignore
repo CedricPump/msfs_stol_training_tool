@@ -11,3 +11,7 @@ eSTOL_Training_Tool/eSTOL_Training_Tool_Core/Properties/PublishProfiles/FolderPr
 eSTOL_score_xml/.vscode/
 eSTOL_score_xml/__pycache__/influx_token.cpython-311.pyc
 eSTOL_score_xml/influx_token.py
+/estol(1).svg
+/eSTOL_Training_Tool/eSTOL_Training_Tool_Core/Influx/MyInflux.cs
+/eSTOL_Training_Tool/eSTOL_Training_Tool_Core/Influx/MyInflux.cs
+/nationaleSTOL.svg

@@ -74,6 +74,8 @@
             buttonCheckUpdate = new System.Windows.Forms.Button();
             label5 = new System.Windows.Forms.Label();
             toolTiphint = new System.Windows.Forms.ToolTip(components);
+            labelPanelInstallStatus = new System.Windows.Forms.Label();
+            buttonInstallPanel = new System.Windows.Forms.Button();
             buttonSetFuelStandard = new System.Windows.Forms.Button();
             toolTipZoom = new System.Windows.Forms.ToolTip(components);
             labelPatternAltitude = new System.Windows.Forms.Label();
@@ -248,7 +250,7 @@
             labelStopwatch.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             labelStopwatch.AutoSize = true;
             labelStopwatch.Font = new System.Drawing.Font("Consolas", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            labelStopwatch.Location = new System.Drawing.Point(711, 659);
+            labelStopwatch.Location = new System.Drawing.Point(711, 630);
             labelStopwatch.Name = "labelStopwatch";
             labelStopwatch.Size = new System.Drawing.Size(132, 41);
             labelStopwatch.TabIndex = 14;
@@ -258,7 +260,7 @@
             // progressBarStopwatch
             // 
             progressBarStopwatch.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            progressBarStopwatch.Location = new System.Drawing.Point(709, 714);
+            progressBarStopwatch.Location = new System.Drawing.Point(709, 685);
             progressBarStopwatch.Name = "progressBarStopwatch";
             progressBarStopwatch.Size = new System.Drawing.Size(210, 23);
             progressBarStopwatch.TabIndex = 15;
@@ -267,7 +269,7 @@
             // 
             buttonStartStopwatch.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             buttonStartStopwatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            buttonStartStopwatch.Location = new System.Drawing.Point(843, 684);
+            buttonStartStopwatch.Location = new System.Drawing.Point(843, 655);
             buttonStartStopwatch.Name = "buttonStartStopwatch";
             buttonStartStopwatch.Size = new System.Drawing.Size(76, 24);
             buttonStartStopwatch.TabIndex = 16;
@@ -279,7 +281,7 @@
             // 
             button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button1.Location = new System.Drawing.Point(844, 655);
+            button1.Location = new System.Drawing.Point(844, 626);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(75, 23);
             button1.TabIndex = 18;
@@ -302,7 +304,7 @@
             // 
             numericUpDownStopwatchOffest.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             numericUpDownStopwatchOffest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            numericUpDownStopwatchOffest.Location = new System.Drawing.Point(711, 626);
+            numericUpDownStopwatchOffest.Location = new System.Drawing.Point(711, 597);
             numericUpDownStopwatchOffest.Name = "numericUpDownStopwatchOffest";
             numericUpDownStopwatchOffest.Size = new System.Drawing.Size(208, 23);
             numericUpDownStopwatchOffest.TabIndex = 20;
@@ -313,7 +315,7 @@
             // 
             label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(710, 608);
+            label2.Location = new System.Drawing.Point(710, 579);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(39, 15);
             label2.TabIndex = 21;
@@ -334,8 +336,8 @@
             // 
             // panelWind
             // 
-            panelWind.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            panelWind.Location = new System.Drawing.Point(709, 491);
+            panelWind.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            panelWind.Location = new System.Drawing.Point(709, 479);
             panelWind.Name = "panelWind";
             panelWind.Size = new System.Drawing.Size(69, 68);
             panelWind.TabIndex = 23;
@@ -343,10 +345,10 @@
             // 
             // labelWind
             // 
-            labelWind.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            labelWind.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             labelWind.AutoSize = true;
             labelWind.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            labelWind.Location = new System.Drawing.Point(784, 506);
+            labelWind.Location = new System.Drawing.Point(784, 494);
             labelWind.Name = "labelWind";
             labelWind.Size = new System.Drawing.Size(60, 25);
             labelWind.TabIndex = 24;
@@ -355,9 +357,9 @@
             // 
             // label3
             // 
-            label3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(784, 491);
+            label3.Location = new System.Drawing.Point(784, 479);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(35, 15);
             label3.TabIndex = 25;
@@ -467,10 +469,10 @@
             // 
             // panelCollisions
             // 
-            panelCollisions.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            panelCollisions.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             panelCollisions.BackgroundImage = (System.Drawing.Image)resources.GetObject("panelCollisions.BackgroundImage");
             panelCollisions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            panelCollisions.Location = new System.Drawing.Point(852, 491);
+            panelCollisions.Location = new System.Drawing.Point(852, 479);
             panelCollisions.Name = "panelCollisions";
             panelCollisions.Size = new System.Drawing.Size(68, 68);
             panelCollisions.TabIndex = 103;
@@ -594,6 +596,32 @@
             toolTiphint.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             toolTiphint.ToolTipTitle = "Hint";
             // 
+            // labelPanelInstallStatus
+            // 
+            labelPanelInstallStatus.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            labelPanelInstallStatus.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelPanelInstallStatus.Location = new System.Drawing.Point(707, 714);
+            labelPanelInstallStatus.Name = "labelPanelInstallStatus";
+            labelPanelInstallStatus.Size = new System.Drawing.Size(130, 16);
+            labelPanelInstallStatus.TabIndex = 90;
+            labelPanelInstallStatus.Text = "MSFS panel: checking...";
+            labelPanelInstallStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            toolTiphint.SetToolTip(labelPanelInstallStatus, "MSFS 2024 in-sim toolbar panel install status (Microsoft Store or Steam; MSFS 2020 is not supported)");
+            // 
+            // buttonInstallPanel
+            // 
+            buttonInstallPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            buttonInstallPanel.Enabled = false;
+            buttonInstallPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            buttonInstallPanel.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            buttonInstallPanel.Location = new System.Drawing.Point(843, 711);
+            buttonInstallPanel.Name = "buttonInstallPanel";
+            buttonInstallPanel.Size = new System.Drawing.Size(76, 22);
+            buttonInstallPanel.TabIndex = 91;
+            buttonInstallPanel.Text = "Install Panel";
+            toolTiphint.SetToolTip(buttonInstallPanel, "Install/update the STOL in-sim MSFS toolbar panel");
+            buttonInstallPanel.Click += buttonInstallPanel_Click;
+            // 
             // buttonSetFuelStandard
             // 
             buttonSetFuelStandard.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
@@ -616,10 +644,10 @@
             // 
             // labelPatternAltitude
             // 
-            labelPatternAltitude.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            labelPatternAltitude.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             labelPatternAltitude.AutoSize = true;
             labelPatternAltitude.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            labelPatternAltitude.Location = new System.Drawing.Point(707, 562);
+            labelPatternAltitude.Location = new System.Drawing.Point(707, 550);
             labelPatternAltitude.Name = "labelPatternAltitude";
             labelPatternAltitude.Size = new System.Drawing.Size(171, 25);
             labelPatternAltitude.TabIndex = 114;
@@ -630,6 +658,8 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(931, 748);
+            Controls.Add(buttonInstallPanel);
+            Controls.Add(labelPanelInstallStatus);
             Controls.Add(buttonSetFuelStandard);
             Controls.Add(labelPatternAltitude);
             Controls.Add(label5);
@@ -675,6 +705,7 @@
             Controls.Add(textBoxUser);
             Controls.Add(textBoxResult);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new System.Drawing.Size(947, 787);
             Name = "FormUI";
             Text = "STOL Training Tool";
             Load += FormUI_Load;
@@ -705,6 +736,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBoxOntop;
         private System.Windows.Forms.NumericUpDown numericUpDownStopwatchOffest;
+        private System.Windows.Forms.Label labelPanelInstallStatus;
+        private System.Windows.Forms.Button buttonInstallPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBoxDebugging;
         private System.Windows.Forms.Panel panelWind;

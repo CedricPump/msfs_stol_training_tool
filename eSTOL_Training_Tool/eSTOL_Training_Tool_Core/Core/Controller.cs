@@ -57,14 +57,35 @@ namespace STOL_Training_Tool_Core.Core
         int BankAngleLimit = 75;
         Telemetrie telemetrieLocked = null;
         public bool isPaused = false;
+        PanelServer panelServer;
 
         public Controller()
         {
             this.config = Config.Load();
-            
+
             this.unit = config.Unit;
-            
-            if(config.ConnectionType == "SimConnect") 
+
+            if (config.EnableInGamePanelServer)
+            {
+                try
+                {
+                    panelServer = new PanelServer(config.PanelHost, config.PanelPort);
+                    if (panelServer.IsRunning)
+                    {
+                        AppendResult($"[INFO]: In-game panel status server running at http://{config.PanelHost}:{config.PanelPort}/status");
+                    }
+                    else
+                    {
+                        AppendResult("[WARN]: In-game panel status server failed to start (port busy?)");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    AppendResult("[WARN]: In-game panel status server failed to start: " + ex.Message);
+                }
+            }
+
+            if(config.ConnectionType == "SimConnect")
             {
                 AppendResult("[INFO]: Using SimConnect API");
                 plane = new AircraftSimConnect(OnPlaneEventCallback);
@@ -252,11 +273,13 @@ namespace STOL_Training_Tool_Core.Core
 
         public void SetUser(string username)
         {
-            using (StreamWriter writer = new StreamWriter(config.UserPath))
-            {
-                writer.WriteLine(username);
-                user = username;
-            }
+            // Only replace line 1 - later lines hold other settings (e.g. the
+            // saved Community folder, see MsfsPanelInstall).
+            var lines = File.Exists(config.UserPath) ? File.ReadAllLines(config.UserPath).ToList() : new List<string>();
+            if (lines.Count == 0) lines.Add("");
+            lines[0] = username;
+            File.WriteAllLines(config.UserPath, lines);
+            user = username;
             stol.user = username;
         }
 
@@ -296,14 +319,16 @@ namespace STOL_Training_Tool_Core.Core
                     if(!plane.isInit) { 
                         plane.Update();
                         // if(form != null) AppendResult("Test " + DateTime.Now.ToFileTimeUtc());
-                        if(form != null) form.setAligned("Sim not connected", Color.Red);
+                        UpdateAligned("Sim not connected", Color.Red);
+                        panelServer?.UpdateStatus(s => s.Connected = false);
                         System.Threading.Thread.Sleep(330);
                         continue;
                     };
 
                     if (plane.Title == null)
                     {
-                        if (form != null) form.setAligned("Sim not initialized", Color.DarkOrange);
+                        UpdateAligned("Sim not initialized", Color.DarkOrange);
+                        panelServer?.UpdateStatus(s => s.Connected = false);
                         plane.Update();
                         System.Threading.Thread.Sleep(330);
                         continue;
@@ -361,6 +386,31 @@ namespace STOL_Training_Tool_Core.Core
                                 form.setWind(plane.getRelWindDir(), plane.getWindTotal());
                                 form.setCollisionWheels();
 
+                                double windDir = plane.getRelWindDir();
+                                double windTotal = plane.getWindTotal();
+                                double aglFt = telemetrie.AltitudeAGL;
+                                string state = cycleState.ToString();
+                                string currentUnit = unit;
+
+                                // Mirrors FormUI's stopwatch: running from start-of-roll through
+                                // rollout, frozen (not reset) once back at Hold until the next run.
+                                bool timerRunning = stol.StartTime != null &&
+                                    (cycleState == CycleState.Takeoff || cycleState == CycleState.Climbout ||
+                                     cycleState == CycleState.Fly || cycleState == CycleState.Rollout);
+                                double elapsedSeconds = timerRunning ? (DateTime.Now - stol.StartTime.Value).TotalSeconds : 0;
+
+                                panelServer?.UpdateStatus(s =>
+                                {
+                                    s.Connected = true;
+                                    s.State = state;
+                                    s.Unit = currentUnit;
+                                    s.Wind.SpeedKt = windTotal;
+                                    s.Wind.RelativeDirDeg = windDir;
+                                    s.AglFt = aglFt;
+                                    s.TimerRunning = timerRunning;
+                                    if (timerRunning) s.ElapsedSeconds = elapsedSeconds;
+                                });
+
                                 lastUIResfresh = DateTime.Now;
                             }
 
@@ -397,11 +447,12 @@ namespace STOL_Training_Tool_Core.Core
                                     }
                                 }
 
-                                if(plane.IsPropstrike()) 
+                                if(plane.IsPropstrike())
                                 {
                                     if (!stol.hasDeviation("PropStrike"))
                                     {
                                         stol.deviations.Add(new STOLDeviation("PropStrike", 1, 3));
+                                        panelServer?.UpdateStatus(s => s.IsPropStrike = true);
                                         try
                                         {
                                             // send event
@@ -533,7 +584,7 @@ namespace STOL_Training_Tool_Core.Core
                                         stol.TakeoffPosition = stol.InitialPosition;
                                         stol.TakeoffTime = DateTime.Now;
                                         stol.deviations.Add(new STOLDeviation("HotstartInAir", 1, 0));
-                                        if (this.form != null) this.form.setAligned("", SystemColors.Control);
+                                        UpdateAligned("", SystemColors.Control);
                                     }
                                     break;
                                 case CycleState.Hold:
@@ -546,23 +597,25 @@ namespace STOL_Training_Tool_Core.Core
 
                                             if (!(spin > angleR + flagsAngleTreshold || spin < angleL - flagsAngleTreshold) && yOffset > -1.2 && yOffset < 0 && Math.Abs(xOffset) < 21)
                                             {
-                                                this.form.setAligned($"aligned ({Math.Round(stol.GetDistanceTo(telemetrie.Position) * 3.28084):F0} ft)", System.Drawing.Color.LightGreen);
+                                                UpdateAligned($"aligned ({Math.Round(stol.GetDistanceTo(telemetrie.Position) * 3.28084):F0} ft)", System.Drawing.Color.LightGreen);
+                                                ResetPanelRunStatus();
                                             }
                                             else if (Math.Abs(spin) < 45 && yOffset > -1.2 && yOffset < 1 && Math.Abs(xOffset) < 21)
                                             {
-                                                this.form.setAligned($"aligned (bad heading,{Math.Round(stol.GetDistanceTo(telemetrie.Position) * 3.28084):F0} ft)", System.Drawing.Color.LightGreen);
+                                                UpdateAligned($"aligned (bad heading,{Math.Round(stol.GetDistanceTo(telemetrie.Position) * 3.28084):F0} ft)", System.Drawing.Color.LightGreen);
+                                                ResetPanelRunStatus();
                                             }
                                             else if (Math.Abs(spin) < 90 && yOffset > -180 && yOffset < 1 && Math.Abs(xOffset) < 21)
                                             {
-                                                this.form.setAligned($"on lineup ({Math.Round(stol.GetDistanceTo(telemetrie.Position) * 3.28084):F0} ft)", System.Drawing.Color.LightYellow);
+                                                UpdateAligned($"on lineup ({Math.Round(stol.GetDistanceTo(telemetrie.Position) * 3.28084):F0} ft)", System.Drawing.Color.LightYellow);
                                             }
                                             else if (Math.Abs(spin) < 90 && yOffset > 1 && yOffset < 600 && Math.Abs(xOffset) < 21)
                                             {
-                                                this.form.setAligned("down field", System.Drawing.Color.LightYellow);
+                                                UpdateAligned("down field", System.Drawing.Color.LightYellow);
                                             }
                                             else
                                             {
-                                                this.form.setAligned("NOT ALIGNED", System.Drawing.Color.IndianRed);
+                                                UpdateAligned("NOT ALIGNED", System.Drawing.Color.IndianRed);
                                             }
                                         }
 
@@ -575,7 +628,7 @@ namespace STOL_Training_Tool_Core.Core
                                             stol.StartTime = DateTime.Now;
                                             this.form.StartStopWatch();
 
-                                            if (config.enableGPXRecodering) 
+                                            if (config.enableGPXRecodering)
                                             {
                                                 GPXRecorder.Reset();
                                             }
@@ -600,7 +653,7 @@ namespace STOL_Training_Tool_Core.Core
                                     }
                                 case CycleState.Takeoff:
                                     {
-                                        this.form.setAligned("", System.Drawing.SystemColors.Control);
+                                        UpdateAligned("", System.Drawing.SystemColors.Control);
                                         (double andleL, double angleR) = GetFlagAngles(stol.InitialPosition, (double)stol.InitialHeading, plane);
 
                                         // on Takeoff -> State Climbout
@@ -613,6 +666,16 @@ namespace STOL_Training_Tool_Core.Core
                                             stol.takeoffWindDirection = plane.AmbientWindDirection;
                                             // and last 4 chars from UUID
                                             AppendResult($"---- New run {stol.UUID.Substring(stol.UUID.Length - 4)} ---\r\n\r\nTakoff recorded: {(stol.GetTakeoffDistance() * 3.28084):F0} ft");
+                                            {
+                                                double takeoffDistance = Math.Round(ConvertUnit(stol.GetTakeoffDistance()));
+                                                string takeoffUnit = unit;
+                                                panelServer?.UpdateStatus(s =>
+                                                {
+                                                    s.HasTakeoff = true;
+                                                    s.TakeoffDistance = takeoffDistance;
+                                                    s.Unit = takeoffUnit;
+                                                });
+                                            }
                                             if (config.debug && config.DebugAutoPause) this.PauseNoPopup(plane, $"Takeoff: {stol.GetTakeoffDistance():F0}ft");
 
                                             try
@@ -711,6 +774,21 @@ namespace STOL_Training_Tool_Core.Core
                                             string timeStr = time.Value.Minutes.ToString("0") + ":" + time.Value.Seconds.ToString("00") + "." + time.Value.Milliseconds.ToString("000");
                                             AppendResult($"Main Touchdown recorded {timeStr}: {(stol.GetTouchdownDistance() * 3.28084):F0}ft");
                                             AppendResult($"Touchdown registered {timeStr}: {(stol.GetTouchdownDistance() * 3.28084):F0}ft");
+
+                                            {
+                                                double touchdownDistanceConverted = Math.Round(ConvertUnit(stol.GetTouchdownDistance()));
+                                                double landingRateFpm = Math.Round((double)stol.TouchdownVerticalSpeed);
+                                                string touchdownUnit = unit;
+                                                bool isScratch = stol.GetTouchdownDistance() <= 0;
+                                                panelServer?.UpdateStatus(s =>
+                                                {
+                                                    s.HasTouchdown = true;
+                                                    s.TouchdownDistance = touchdownDistanceConverted;
+                                                    s.LandingRateFpm = landingRateFpm;
+                                                    s.Unit = touchdownUnit;
+                                                    s.IsScratch = isScratch;
+                                                });
+                                            }
 
                                             (double angleL, double angleR) = GetFlagAngles(stol.InitialPosition, (double)stol.InitialHeading, plane);
                                             if (spin > angleR + flagsAngleTreshold || spin < angleL - flagsAngleTreshold)
@@ -819,6 +897,25 @@ namespace STOL_Training_Tool_Core.Core
                                             AppendResult(result.getConsoleString());
                                             form.DrawResult(result);
 
+                                            {
+                                                double landingDistance = result.Landingdist;
+                                                double stoppingDistance = result.Stoppingdist;
+                                                double score = result.Score;
+                                                string landingUnit = result.Unit;
+                                                List<PanelRemark> remarks = stol.deviations
+                                                    .Select(d => new PanelRemark { Type = d.Type, Severity = d.Severity })
+                                                    .ToList();
+                                                panelServer?.UpdateStatus(s =>
+                                                {
+                                                    s.HasLanding = true;
+                                                    s.LandingDistance = landingDistance;
+                                                    s.StoppingDistance = stoppingDistance;
+                                                    s.Score = score;
+                                                    s.Unit = landingUnit;
+                                                    s.Remarks = remarks;
+                                                });
+                                            }
+
                                             try
                                             {
                                                 // send event
@@ -896,7 +993,7 @@ namespace STOL_Training_Tool_Core.Core
                         else
                         {
                             // wait until stol is init
-                            if(this.form != null) this.form.setAligned("No Reference: Apply Preset", System.Drawing.Color.Red);
+                            UpdateAligned("No Reference: Apply Preset", System.Drawing.Color.Red);
                         }
                         lastTelemetrie = telemetrie;
                     }
@@ -922,6 +1019,62 @@ namespace STOL_Training_Tool_Core.Core
         {
             Console.WriteLine(text);
             if (form != null) form.appendResult(text);
+        }
+
+        private void UpdateAligned(string text, Color color)
+        {
+            if (form != null) form.setAligned(text, color);
+            panelServer?.UpdateStatus(s =>
+            {
+                s.Aligned.Text = text;
+                s.Aligned.Color = ToHex(color);
+            });
+        }
+
+        private static string ToHex(Color c)
+        {
+            return $"#{c.R:X2}{c.G:X2}{c.B:X2}";
+        }
+
+        private void ResetPanelRunStatus()
+        {
+            panelServer?.UpdateStatus(s =>
+            {
+                s.HasTakeoff = false;
+                s.TakeoffDistance = 0;
+                s.HasTouchdown = false;
+                s.TouchdownDistance = 0;
+                s.LandingRateFpm = 0;
+                s.HasLanding = false;
+                s.StoppingDistance = 0;
+                s.LandingDistance = 0;
+                s.Score = 0;
+                s.IsScratch = false;
+                s.IsPropStrike = false;
+                s.Remarks = new List<PanelRemark>();
+                // The timer freezes gray at the finished pattern time as soon as
+                // TimerRunning goes false (see the uiRefreshIntervall block below,
+                // which stops touching ElapsedSeconds once not running) and stays
+                // that way through taxi-back. It should only reset here, at the
+                // same "aligned again" trigger as everything else above - not the
+                // instant the next takeoff roll starts, which would otherwise make
+                // it appear to reset on its own before you're actually aligned.
+                s.TimerRunning = false;
+                s.ElapsedSeconds = 0;
+            });
+        }
+
+        private double ConvertUnit(double valueMeters)
+        {
+            switch (unit)
+            {
+                case "meters":
+                    return valueMeters;
+                case "yard":
+                    return valueMeters * 1.09361;
+                default:
+                    return valueMeters * 3.28084; // feet
+            }
         }
 
         private (double, double) GetFlagAngles(GeoCoordinate origin, double initHeading, Plane plane)

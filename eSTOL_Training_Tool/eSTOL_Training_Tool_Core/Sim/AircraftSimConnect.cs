@@ -276,15 +276,27 @@ namespace STOL_Training_Tool
         {
             if (simconnect != null)
             {
-                simconnect.ReceiveMessage();
-                simconnect.ReceiveDispatch(new SignalProcDelegate(MyDispatchProcA));
-                foreach (int i in definitions.Keys)
+                try
                 {
-                    // simconnect.RequestDataOnSimObjectType(definitions[(DATA_DEFINE_ID)i].reqId, definitions[(DATA_DEFINE_ID)i].defId, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
+                    simconnect.ReceiveMessage();
+                    simconnect.ReceiveDispatch(new SignalProcDelegate(MyDispatchProcA));
+                    foreach (int i in definitions.Keys)
+                    {
+                        // simconnect.RequestDataOnSimObjectType(definitions[(DATA_DEFINE_ID)i].reqId, definitions[(DATA_DEFINE_ID)i].defId, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
 
-                    simconnect.RequestDataOnSimObject(definitions[(DATA_DEFINE_ID)i].reqId, definitions[(DATA_DEFINE_ID)i].defId, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SIM_FRAME, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, this.conf.SimconnectFrames, 0);
+                        simconnect.RequestDataOnSimObject(definitions[(DATA_DEFINE_ID)i].reqId, definitions[(DATA_DEFINE_ID)i].defId, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SIM_FRAME, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, this.conf.SimconnectFrames, 0);
+                    }
+                    return true;
                 }
-                return true;
+                catch (Exception ex)
+                {
+                    // MSFS was closed/crashed; the SimConnect handle is now stale and further
+                    // calls on it throw instead of reporting disconnection cleanly.
+                    Console.WriteLine("[ERROR]: Lost connection to MSFS: " + ex.Message);
+                    simconnect = null;
+                    IsSimConnected = false;
+                    return false;
+                }
             }
             else
             {

@@ -1,0 +1,8 @@
+<RPTInputs>
+	<RPTInput Path="c:\users\smitty\source\repos\msfs_estol_training_tool\estol_training_tool\stol_training_panel\build\PackageSources\stol-training-panel.xml">
+		<Package Name="stol-training-panel">
+			<AssetGroup Name="stol-training-panel"/>
+		</Package>
+	</RPTInput>
+</RPTInputs>
+

@@ -959,7 +959,105 @@ namespace STOL_Training_Tool_Core.UI
 
         private void FormUI_Load(object sender, EventArgs e)
         {
+            // Clicking the status label lets the user pick a different
+            // Community folder even when detection succeeded.
+            labelPanelInstallStatus.Cursor = Cursors.Hand;
+            labelPanelInstallStatus.Click += (s, ev) =>
+            {
+                if (BrowseForCommunityFolder()) RefreshPanelInstallStatus();
+            };
+            new ToolTip().SetToolTip(labelPanelInstallStatus, "Click to choose the MSFS 2024 Community folder");
 
+            RefreshPanelInstallStatus();
+        }
+
+        private MsfsInstallInfo panelInstallInfo = null;
+
+        /// <summary>Asks the user for their Community folder and saves it to
+        /// user.txt. Returns false if they cancelled.</summary>
+        private bool BrowseForCommunityFolder()
+        {
+            using var dialog = new FolderBrowserDialog
+            {
+                Description = "Select your MSFS 2024 Community folder",
+                UseDescriptionForTitle = true,
+                InitialDirectory = panelInstallInfo?.CommunityPath ?? MsfsPanelInstall.SuggestedBrowseDir()
+            };
+            if (dialog.ShowDialog(this) != DialogResult.OK) return false;
+
+            string communityPath = MsfsPanelInstall.NormalizeCommunitySelection(dialog.SelectedPath);
+            try
+            {
+                MsfsPanelInstall.SaveCommunityPath(communityPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Couldn't save the Community folder location:\n\n{ex.Message}", "Save Failed");
+            }
+            panelInstallInfo = new MsfsInstallInfo { Edition = "Saved", CommunityPath = communityPath };
+            return true;
+        }
+
+        private void RefreshPanelInstallStatus()
+        {
+            // Detection does registry/filesystem I/O - run it once (on load,
+            // and again right after an install), not on a timer.
+            panelInstallInfo = MsfsPanelInstall.FindMsfs2024Install();
+            string bundledVersion = MsfsPanelInstall.GetBundledPanelVersion();
+            buttonInstallPanel.Text = "Install Panel";
+
+            if (panelInstallInfo?.CommunityPath == null)
+            {
+                labelPanelInstallStatus.Text = "Community folder not found";
+                buttonInstallPanel.Text = "Browse...";
+                buttonInstallPanel.Enabled = true;
+            }
+            else if (panelInstallInfo.InstalledPanelVersion == null)
+            {
+                labelPanelInstallStatus.Text = "Panel: not installed";
+                buttonInstallPanel.Enabled = true;
+            }
+            else if (bundledVersion != null && panelInstallInfo.InstalledPanelVersion != bundledVersion)
+            {
+                labelPanelInstallStatus.Text = $"Panel: v{panelInstallInfo.InstalledPanelVersion} -> v{bundledVersion}";
+                buttonInstallPanel.Enabled = true;
+            }
+            else
+            {
+                labelPanelInstallStatus.Text = $"Panel: v{panelInstallInfo.InstalledPanelVersion} (up to date)";
+                buttonInstallPanel.Text = "ReInstall Panel";
+                buttonInstallPanel.Enabled = true;
+            }
+        }
+
+        private void buttonInstallPanel_Click(object sender, EventArgs e)
+        {
+            if (panelInstallInfo?.CommunityPath == null && !BrowseForCommunityFolder()) return;
+
+            // Loop so "Change Location..." re-shows the prompt with the new path.
+            while (true)
+            {
+                using var dialog = new FormInstallPanel(panelInstallInfo.CommunityPath);
+                var clicked = dialog.ShowDialog(this);
+                if (clicked == DialogResult.Yes) break;
+                if (clicked != DialogResult.Retry) return;
+                BrowseForCommunityFolder();
+            }
+
+            try
+            {
+                MsfsPanelInstall.InstallPanel(panelInstallInfo.CommunityPath);
+                MessageBox.Show(
+                    this,
+                    $"Installed to:\n{panelInstallInfo.CommunityPath}\n\nRestart MSFS to see the change.",
+                    "Panel Installed");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Couldn't install the panel:\n\n{ex.Message}", "Install Failed");
+            }
+
+            RefreshPanelInstallStatus();
         }
 
         private void buttonSetFuelStandard_Click(object sender, EventArgs e)

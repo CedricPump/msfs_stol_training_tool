@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>STOL Training</title>
+    <link rel="stylesheet" href="panel.css" />
+</head>
+<body>
+    <div id="root">
+        <header id="header">
+            <div id="headerTop">
+                <div id="headerBrand">
+                    <span id="headerLogo">STOL Training</span>
+                </div>
+                <div id="scaleControl">
+                    <button id="scaleDown" class="scaleBtn">-</button>
+                    <span id="scaleLabel">100%</span>
+                    <button id="scaleUp" class="scaleBtn">+</button>
+                </div>
+            </div>
+        </header>
+
+        <div id="alignedBar">--</div>
+
+        <div class="row">
+            <div class="tile">
+                <div class="label">TAKEOFF</div>
+                <div class="value" id="takeoffValue">--</div>
+            </div>
+            <div class="tile">
+                <div class="label">TOUCHDOWN</div>
+                <div class="value" id="touchdownValue">--</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="tile">
+                <div class="label">STOPPING</div>
+                <div class="value" id="stoppingValue">--</div>
+            </div>
+            <div class="tile">
+                <div class="label">LANDING</div>
+                <div class="value" id="landingValue">--</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="tile score">
+                <div class="label">SCORE</div>
+                <div class="value" id="scoreValue">--</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="tile wind">
+                <svg id="windCompass" viewBox="0 0 64 64" width="40" height="40">
+                    <defs>
+                        <marker id="windArrowHead" viewBox="0 0 10 10" refX="9" refY="5"
+                                markerWidth="11" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto">
+                            <path d="M0,0 L10,5 L0,10 Z" class="compassArrowHead" />
+                        </marker>
+                    </defs>
+                    <circle cx="32" cy="32" r="27" class="compassRing" />
+                    <circle cx="32" cy="32" r="2" class="compassHub" />
+                    <line id="windArrow" x1="32" y1="32" x2="32" y2="9" class="compassArrow" marker-end="url(#windArrowHead)" />
+                </svg>
+                <div class="windReadout">
+                    <div class="label">WIND</div>
+                    <div class="value" id="windValue">-- kt</div>
+                </div>
+            </div>
+            <div class="tile">
+                <div class="label">AGL</div>
+                <div class="value" id="aglValue">-- ft</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="tile">
+                <div class="label">LDG RATE</div>
+                <div class="value" id="ldgRateValue">-- fpm</div>
+            </div>
+            <div class="tile">
+                <div class="label">TIMER</div>
+                <div class="value" id="clockValue">00:00</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="tile remarks">
+                <div class="label">REMARKS</div>
+                <div class="value" id="remarksValue">--</div>
+            </div>
+        </div>
+
+        <div id="connStatus" class="connStatus hidden">Sim not connected</div>
+    </div>
+    <script src="panel.js"></script>
+</body>
+</html>

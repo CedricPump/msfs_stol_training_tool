@@ -50,6 +50,10 @@ namespace STOL_Training_Tool_Core.Core
         public int ApiPort { get; set; } = 5001;
         public string ApiHost { get; set; } = "127.0.0.1";
 
+        public bool EnableInGamePanelServer { get; set; } = true;
+        public string PanelHost { get; set; } = "127.0.0.1";
+        public int PanelPort { get; set; } = 7865; // "STOL" on a phone keypad
+
         public string influxHost = "https://eu-central-1-1.aws.cloud2.influxdata.com/";
         public string influxBucketResult = "My_eSTOL_Bucket";
         public string influxBucketTelemetry = "My_eSTOL_Bucket";
