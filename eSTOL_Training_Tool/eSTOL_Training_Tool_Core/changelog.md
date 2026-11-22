@@ -1,3 +1,12 @@
+v1.5.4
+
+- fixed 2024 XCub gear index shift
+
+v1.5.3
+
+- added config for Pietenpol
+- fixed config for current Tailorcraft version
+
 v1.5.2
 
 - added new fiel coordinates for 77S
